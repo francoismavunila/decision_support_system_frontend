@@ -17,7 +17,6 @@ export default function Home() {
 
   const fetchGetData = async () => {
     try {
-        console.log(backendUrl)
         const response = await fetch("https://backend-affiliate-lml2.onrender.com", {
             method: 'GET',
             headers: {
@@ -25,7 +24,7 @@ export default function Home() {
                 'Content-Type': 'application/json',
             },
         });
-        console.log(response.text());
+        console.log(response);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
