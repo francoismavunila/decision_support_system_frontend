@@ -15,6 +15,32 @@ export default function Home() {
     }
   }, []);
 
+  const fetchGetData = async () => {
+    try {
+        console.log(backendUrl)
+        const response = await fetch("https://backend-affiliate-lml2.onrender.com", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        });
+        console.log(response.text());
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        // const data = await response.json();
+        
+        return response;
+    } catch (error) {
+        console.error("Error fetching data: ", error);
+    }
+};
+
+useEffect(()=>{
+    fetchGetData()
+},[])
+
   return (
     <main className="h-screen">
         <div className="flex justify-center items-center h-full">
